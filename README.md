@@ -15,6 +15,8 @@ It starts with a simple question, `Will you be my Valentine?`, but the `No` butt
 - Celebration screen with confetti and success GIF
 - Background music with mute/unmute toggle
 - Pink themed responsive UI ready for Vercel
+- **Progressive Web App (PWA)**: Installable on iOS/Android as a standalone app
+- **Offline Support**: The app can be accessed even without an internet connection once installed
 
 ## Tech Stack
 
@@ -48,6 +50,21 @@ Preview the production build:
 npm run preview
 ```
 
+## Progressive Web App (PWA)
+
+This project is a fully functional **Progressive Web App**. To install it on your device:
+
+1. **On Mobile (iOS/Android)**:
+   - Open the deployed URL in Safari (iOS) or Chrome (Android).
+   - Tap the **Share** button (iOS) or **Menu dots** (Android).
+   - Select **"Add to Home Screen"**.
+   - The app will now appear on your home screen with its own icon and open without browser UI.
+
+2. **On Desktop (Chrome/Edge)**:
+   - Click the **Install Icon** in the address bar (right side).
+   - Confirm the installation.
+   - The app will launch in a standalone window.
+
 ## Project Structure
 
 ```text
@@ -55,6 +72,8 @@ public/
   Gifs/
   Music/
   favicon.svg
+  icon-192.png
+  icon-512.png
 src/
   App.jsx
   index.css
