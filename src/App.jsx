@@ -858,6 +858,7 @@ function App() {
                 }}
               >
               <img
+                key={mainGifSrc}
                 className="reaction-gif reaction-gif-main"
                 src={mainGifSrc}
                 alt="Valentine reaction gif"
@@ -875,6 +876,8 @@ function App() {
                 isMobile && noClicks === 0 && !movePhaseActive ? 'is-mobile-initial' : ''
               } ${
                 isMobile && noClicks > 0 && !movePhaseActive ? 'is-mobile-stacked' : ''
+              } ${
+                isMobile && noClicks === 4 && !movePhaseActive ? 'is-mobile-stacked-four' : ''
               } ${
                 isMobile && noClicks >= 5 && !movePhaseActive ? 'is-mobile-stacked-late' : ''
               } ${
