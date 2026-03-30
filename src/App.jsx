@@ -233,9 +233,9 @@ function App() {
   const desktopFastGrowthClicks = Math.min(growthClicks, 5)
   const desktopSlowGrowthClicks = Math.max(growthClicks - 5, 0)
   const baseYesScale = isMobile
-    ? Math.min(2.72, 1.08 * Math.pow(1.16, growthClicks))
+    ? Math.min(2.5, 1.09 * Math.pow(1.15, growthClicks))
     : Math.min(5.0, 1.17 * Math.pow(1.28, desktopFastGrowthClicks) * Math.pow(1.08, desktopSlowGrowthClicks))
-  const yesScale = isMobile && noClicks >= 7 ? baseYesScale * 1.3 : baseYesScale
+  const yesScale = isMobile && noClicks >= 7 ? baseYesScale * 1.12 : baseYesScale
   const yesHoverScale = yesHover ? 1.04 : 1
   const noScale = isMobile ? 1 - Math.min(noClicks, 4) * 0.08 : 1 - Math.min(noClicks, 5) * 0.04
   const centerProgress = Math.min(noClicks / (MESSAGE_STEPS.length - 1), 1)
@@ -244,11 +244,19 @@ function App() {
     ? 0
     : Math.round(
         centerProgress * (isMobile ? 4 : 0) +
-          (isMobile ? Math.max(0, yesScale - 1) * 8 : 0),
+          (isMobile ? Math.max(0, yesScale - 1) * 8 : 0) +
+          (isMobile && noClicks >= 6 ? Math.max(0, noClicks - 5) * 4 : 0),
       )
-  const promptLift = yesAccepted ? 0 : Math.round(centerProgress * (isMobile ? 24 : 118))
+  const promptLift = yesAccepted ? 0 : Math.round(centerProgress * (isMobile ? 58 : 118))
   const mobileYesStackGap =
-    isMobile && !movePhaseActive && noClicks > 0 ? Math.round(10 + Math.max(0, yesScale - 1) * 54) : 0
+    isMobile && !movePhaseActive && noClicks > 0
+      ? Math.round(
+          10 +
+            Math.max(0, yesScale - 1) * 54 +
+            (noClicks >= 5 ? 5 : 0) +
+            (noClicks >= 6 ? 7 : 0),
+        )
+      : 0
   const noInlineShift =
     isMobile
       ? 0
@@ -824,9 +832,13 @@ function App() {
                       : !isMobile && mainGifNumber === 7
                         ? '-6px'
                       : isMobile && mainGifNumber === 3
-                      ? '-18px'
+                      ? '-30px'
                       : isMobile && mainGifNumber === 5
                         ? '24px'
+                      : isMobile && mainGifNumber === 7
+                        ? '-18px'
+                      : isMobile && mainGifNumber === 8
+                        ? '-10px'
                         : undefined,
                   marginBottom:
                     !isMobile && mainGifNumber === 2
@@ -843,17 +855,19 @@ function App() {
                         ? '12px'
                       : !isMobile && mainGifNumber === 8
                         ? '2px'
-                      : isMobile && (mainGifNumber === 3 || mainGifNumber === 4)
+                      : isMobile && mainGifNumber === 3
+                      ? '2px'
+                      : isMobile && mainGifNumber === 4
                       ? '8px'
                       : isMobile && mainGifNumber === 5
-                      ? '18px'
+                      ? '8px'
                       : 
                     isMobile && mainGifNumber === 6
-                      ? '8px'
+                      ? '-14px'
                       : isMobile && mainGifNumber === 7
-                        ? '-4px'
+                        ? '-38px'
                       : mainGifNumber === 8
-                        ? (isMobile ? '-10px' : undefined)
+                        ? (isMobile ? '-46px' : undefined)
                         : undefined,
                 }}
               >
