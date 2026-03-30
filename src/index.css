@@ -286,6 +286,8 @@ h1 {
   text-shadow: 2px 2px 0px rgba(214, 51, 132, 0.2);
   -webkit-text-stroke: 0.55px rgba(214, 51, 132, 0.28);
   white-space: nowrap;
+  width: fit-content;
+  margin-inline: auto;
   transition: transform 240ms ease;
   animation: wiggle 2s ease-in-out infinite;
 }
@@ -772,7 +774,7 @@ h1:hover {
   }
 
   h1:not(.is-success) {
-    width: 100%;
+    width: fit-content;
     max-width: none;
     display: flex;
     flex-direction: column;
